@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAS Bahasa Indonesia - SMAS Al-Hilaal Tehoru</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E40AF', // Biru Elegan
+                        secondary: '#D97706', // Emas / Gold
+                        accent: '#F3F4F6',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- SheetJS untuk Export Excel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body class="bg-slate-100 font-sans text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- HEADER / NAVBAR -->
+    <header class="bg-primary text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-secondary text-white p-2 rounded-lg font-bold text-xl shadow">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight">SMAS AL-HILAAL TEHORU</h1>
+                    <p class="text-xs text-amber-200">Asesmen Sumatif Akhir Semester (SAS) Bahasa Indonesia</p>
+                </div>
+            </div>
+            <div>
+                <button onclick="app.showAdminLoginModal()" class="bg-amber-500 hover:bg-amber-600 text-white text-xs font-semibold px-3 py-2 rounded shadow transition flex items-center gap-1">
+                    <i class="fa-solid fa-lock"></i> Login Admin
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="flex-grow max-w-7xl w-full mx-auto p-4 sm:p-6">
+
+        <!-- 1. HALAMAN BERANDA -->
+        <div id="view-home" class="view-section">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border-t-4 border-secondary max-w-3xl mx-auto my-8">
+                <div class="bg-gradient-to-r from-primary to-blue-800 p-6 sm:p-8 text-white text-center">
+                    <span class="bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Fase E / Kelas X</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold mt-3">ASESMEN SUMATIF AKHIR SEMESTER</h2>
+                    <p class="text-amber-300 font-medium mt-1">Mata Pelajaran: Bahasa Indonesia</p>
+                </div>
+                <div class="p-6 sm:p-8 space-y-4">
+                    <div class="bg-amber-50 border-l-4 border-secondary p-4 rounded-r-lg">
+                        <h3 class="font-bold text-amber-900 text-sm mb-1"><i class="fa-solid fa-circle-info mr-2"></i>Informasi Ujian:</h3>
+                        <ul class="text-sm text-amber-800 space-y-1">
+                            <li>• <strong>Materi:</strong> Teks Laporan Hasil Observasi (LHO)</li>
+                            <li>• <strong>Jumlah Soal:</strong> 40 Soal Pilihan Ganda (Opsi A - E)</li>
+                            <li>• <strong>Waktu Pengerjaan:</strong> 90 Menit</li>
+                            <li>• <strong>Guru Pengampu:</strong> Rosdiana Waifitu, S.Pd.</li>
+                        </ul>
+                    </div>
+                    <div class="text-center pt-4">
+                        <button onclick="app.goToIdentity()" class="w-full sm:w-auto bg-secondary hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-xl shadow-lg transform transition hover:-translate-y-0.5">
+                            <i class="fa-solid fa-arrow-right mr-2"></i> MULAI UJIAN SEKARANG
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. HALAMAN IDENTITAS PESERTA DIDIK -->
+        <div id="view-identity" class="view-section hidden">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border-t-4 border-primary max-w-xl mx-auto my-8 p-6 sm:p-8">
+                <h2 class="text-xl font-bold text-primary mb-2 text-center"><i class="fa-solid fa-id-card mr-2"></i>Identitas Peserta Didik</h2>
+                <p class="text-xs text-slate-500 text-center mb-6">Silakan lengkapi data diri Anda dengan benar sebelum memulai ujian.</p>
+                
+                <form id="form-identity" onsubmit="app.submit
